@@ -6,7 +6,7 @@ export default {
       appTitle: 'Spirited Hooves',
       drawer: false,
       items: [
-          { title: 'Menu' }, 
+          { title: 'About' }, 
           { title: 'Services' }, 
           { title: 'Contact' }
         ]
@@ -32,8 +32,12 @@ export default {
         <v-toolbar app color="deep-purple darken-1" dark>
             <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-spacer class="hidden-md-and-up"></v-spacer>
-            <v-toolbar-title>{{appTitle}}</v-toolbar-title>
-            <v-btn flat class="hidden-sm-and-down">Menu</v-btn>
+            <router-link to="/">
+                <v-toolbar-title to="/">{{appTitle}}</v-toolbar-title>
+            </router-link>
+            <v-btn flat class="hidden-sm-and-down" to="/about">About</v-btn>
+            <v-btn flat class="hidden-sm-and-down" to="/services">Services</v-btn>
+            <v-btn flat class="hidden-sm-and-down" to="/contact">Contact</v-btn>
             <v-spacer class="hidden-sm-and-down"></v-spacer>
         </v-toolbar>
     </div>
@@ -41,4 +45,8 @@ export default {
 </template>
 
 <style scoped>
+    a {
+        color: white;
+        text-decoration: none;
+    }
 </style>

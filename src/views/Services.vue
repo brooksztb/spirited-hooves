@@ -1,13 +1,13 @@
 <script>
-  export default {
-      name: 'About'
-  };
+    export default {
+        name: 'Services'
+    };
 </script>
 
 <template>
     <v-container fluid>
         <v-layout>
-            <h1>About Page</h1>
+            <h1>Services Page</h1>
         </v-layout>
     </v-container>
 </template>
