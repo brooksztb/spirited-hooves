@@ -1,4 +1,7 @@
 <script>
+let offset = 0;
+let call;
+
 export default {
     name: 'HomeHero'
 };
@@ -10,8 +13,8 @@ export default {
             <div class="display-4 font-weight-black white--text text-xs-center">WELCOME TO SPIRITED HOOVES</div>
             <div class="display-4 font-weight-black white--text text-xs-center mb-3">HORSE AND GOAT FARM</div>
             <div class="display-1 font-weight-bold white--text text-xs-center">Come Ride with Us</div>
-            <v-btn fab class="mt-5 deep-purple darken-1">
-            <v-icon large color="white">expand_more</v-icon>
+            <v-btn fab class="mt-5 deep-purple darken-1" v-scroll-to="'#MainInfo'">
+                <v-icon large color="white">expand_more</v-icon>
             </v-btn>
         </v-layout>
     </v-container>
@@ -19,7 +22,7 @@ export default {
 
 <style scoped>
     .home-hero {
-        /* background: url() replace url with actual background image*/  
+        background: url('../assets/images/backgroundhorses.jpg');
         background-size: cover;
         width: 100%;
         height: 100%;
