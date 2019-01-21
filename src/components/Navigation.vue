@@ -3,12 +3,15 @@ export default {
   name: 'Navigation',
   data() {
     return {
-      appTitle: 'Spirited Hooves',
+      appTitle: 'Spirited Hooves: Horse and Goat Farm',
       drawer: false,
       items: [
-          { title: 'About' }, 
-          { title: 'Services' }, 
-          { title: 'Contact' }
+          { title: 'About',
+            link: '#AboutUs' }, 
+          { title: 'Services', 
+            link: '#Services' }, 
+          { title: 'Contact', 
+            link: '#ContactForm' }
         ]
     };
   }
@@ -17,11 +20,11 @@ export default {
 
 <template>
     <div>   
-        <v-navigation-drawer app v-model="drawer" class="deep-purple lighten-2" dark disable-resize-watcher>
+        <v-navigation-drawer app v-model="drawer" class="deep-purple darken-1" dark disable-resize-watcher>
             <v-list>
                 <template v-for="(item, index) in items">
                     <v-list-tile :key="index">
-                        <v-list-tile-content>
+                        <v-list-tile-content class="drawer-item" v-scroll-to="item.link" @click="drawer = !drawer">
                             {{item.title}}
                         </v-list-tile-content>
                     </v-list-tile>
@@ -30,15 +33,15 @@ export default {
             </v-list>
         </v-navigation-drawer>
         <v-toolbar app color="deep-purple darken-1" dark>
-            <router-link to="/">
-                <v-toolbar-title to="/">{{appTitle}}</v-toolbar-title>
-            </router-link>
-            <v-btn flat class="hidden-sm-and-down" to="/about">About</v-btn>
-            <v-btn flat class="hidden-sm-and-down" to="/services">Services</v-btn>
-            <v-btn flat class="hidden-sm-and-down" to="/contact">Contact</v-btn>
-            <v-spacer class="hidden-sm-and-down"></v-spacer>
-            <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
+            <v-spacer class="hidden-md-and-up"></v-spacer>
+            <router-link to="/">
+                <v-toolbar-title v-scroll-to="'#MainInfo'">{{appTitle}}</v-toolbar-title>
+            </router-link>
+            <template v-for="(item, index) in items">
+                <v-btn flat class="hidden-sm-and-down" v-scroll-to="item.link" :key="index">{{item.title}}</v-btn>
+            </template>
+            <v-spacer class="hidden-sm-and-down"></v-spacer> 
         </v-toolbar>
     </div>
     
@@ -48,5 +51,9 @@ export default {
     a {
         color: white;
         text-decoration: none;
+    }
+
+    .drawer-item {
+        cursor: pointer;
     }
 </style>

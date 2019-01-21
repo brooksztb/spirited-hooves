@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <v-container id="MainInfo">
+    <v-container id="AboutUs">
         <v-layout column>
             <v-flex  class="display-2 text-xs-center my-5">Big Title Goes Here</v-flex>
             <v-flex>
