@@ -1,6 +1,16 @@
 <script>
     export default {
-        name: 'HomeServices'
+        name: 'HomeServices',
+        data() {
+            return {
+                hayChixImgs: [
+                    {src: require('@/assets/images/haychix/HayChixNet-Overcast.jpg')},
+                    {src: require('@/assets/images/haychix/HayChixNet-Winter.jpg')},
+                    {src: require('@/assets/images/haychix/HayChixNet-BarnStall.jpg')},
+                    {src: require('@/assets/images/haychix/HayChixNet-Winter2.jpg')}
+                ]
+            }
+        }
     };
     //TODO: Create Reuseable Component to Pull images and associated text with the available services
 </script>
@@ -56,18 +66,16 @@
 
             <v-flex xs12 sm12 md4>
                 <v-card>
-                    <v-img src="http://source.unsplash.com/1SPu0KT-Ejg" height="500px">
-                        <v-container fill-height fluid>
-                            <v-layout fill-height>
-                                <v-flex xs12 align-end flexbox>
-                                    <span class="headline white--text">VEGAN</span>
-                                </v-flex>
-                            </v-layout>
-                        </v-container>
-                    </v-img>
+                    <v-carousel>
+                        <v-carousel-item
+                        v-for="(hayChixImg,i) in hayChixImgs"
+                        :key="i"
+                        :src="hayChixImg.src"
+                        ></v-carousel-item>
+                    </v-carousel>
                     <v-card-title primary-title>
                         <div>
-                            <h3 class="headline mb-0">Vegan</h3>
+                            <h3 class="headline mb-0">Hay Chix Nets</h3>
                             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris felis, varius rutrum massa a, dignissim ornare dui. Cras eget velit eu dui tristique lobortis sit amet vel tellus.
                             </div>
                         </div>
