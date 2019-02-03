@@ -73,11 +73,11 @@
             <!--Special Needs Horses Section-->
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-img :src="require('@/assets/images/horses/Horse1.jpeg')" height="500px">
+                    <v-img :src="require('@/assets/images/horses/TrainerWithHorse.jpg')" height="500px">
                     </v-img>
                     <v-card-title primary-title>
                         <div>
-                            <h3 class="headline mb-0">Special Needs Horses Welcome!</h3>
+                            <h3 class="headline mb-0">Self Care</h3>
                             <div>
                                 Info About this needed
                             </div>
