@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <v-app>
+  <v-app id="app">
     <navigation></navigation>
 
     <v-content transition="slide-x-transition">

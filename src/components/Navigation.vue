@@ -3,7 +3,7 @@ export default {
   name: 'Navigation',
   data() {
     return {
-      appTitle: 'Spirited Hooves: Horse and Goat Farm',
+      appTitle: 'Spirited Hooves',
       drawer: false,
       items: [
           { title: 'About',
@@ -36,7 +36,10 @@ export default {
             <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <router-link to="/">
-                <v-toolbar-title v-scroll-to="'#MainInfo'">{{appTitle}}</v-toolbar-title>
+                <v-toolbar-title v-scroll-to="'#app'">
+                    <img class="nav-logo" src="@/assets/SpiritedHooves-logo.svg" alt="" />
+                    {{appTitle}}
+                </v-toolbar-title>
             </router-link>
             <template v-for="(item, index) in items">
                 <v-btn flat class="hidden-sm-and-down" v-scroll-to="item.link" :key="index">{{item.title}}</v-btn>
@@ -55,5 +58,11 @@ export default {
 
     .drawer-item {
         cursor: pointer;
+    }
+
+    .nav-logo {
+        width: 60px;
+        height: 60px;
+        vertical-align: middle;
     }
 </style>
