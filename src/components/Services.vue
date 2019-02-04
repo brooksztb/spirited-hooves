@@ -1,6 +1,6 @@
 <script>
     export default {
-        name: 'HomeServices',
+        name: 'Services',
         data() {
             return {
                 hayChixImgs: [

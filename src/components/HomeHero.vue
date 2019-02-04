@@ -7,9 +7,9 @@ export default {
 <template>
     <v-container fluid fill-height class="home-hero" id="MainInfo">
         <v-layout justify-center align-center column pa-5>
-            <div class="display-4 font-weight-black white--text text-xs-center">WELCOME TO SPIRITED HOOVES</div>
-            <div class="display-4 font-weight-black white--text text-xs-center mb-3">HORSE AND GOAT FARM, LLC</div>
-            <div class="display-1 font-weight-bold white--text text-xs-center">Come Ride with Us</div>
+            <div class="display-4 font-weight-black deep-purple--text text--darken-1 text-xs-center">WELCOME TO SPIRITED HOOVES</div>
+            <div class="display-4 font-weight-black deep-purple--text text--darken-1 text-xs-center mb-3">HORSE AND GOAT FARM, LLC</div>
+            <div class="display-1 font-weight-bold deep-purple--text text--darken-1 text-xs-center">Come Ride with Us</div>
             <v-btn fab class="mt-5 deep-purple darken-1" v-scroll-to="'#AboutUs'">
                 <v-icon large color="white">expand_more</v-icon>
             </v-btn>
