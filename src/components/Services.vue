@@ -10,6 +10,8 @@
                     {src: require('@/assets/images/haychix/HayChixNet-Winter2.jpg')}
                 ],
                 boardingImgs: [
+                    {src: require('@/assets/images/arena/Arena1.jpg')},
+                    {src: require('@/assets/images/arena/Jump1.jpeg')},
                     {src: require('@/assets/images/barn/OutsideStall.jpg')},
                     {src: require('@/assets/images/barn/Stall-Outdoor-Empty.png')},
                     {src: require('@/assets/images/barn/Barn.jpg')},
@@ -29,7 +31,7 @@
         <v-layout row wrap>
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-carousel :hide-controls="true" :cycle="false"> 
+                    <v-carousel :hide-controls="true" :cycle="false" class="services-carousel"> 
                         <v-carousel-item
                         v-for="(boardingImg,i) in boardingImgs"
                         :key="i"
@@ -52,7 +54,7 @@
             <!--Haychix Nets Section-->
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-carousel :hide-controls="true" :cycle="false"> 
+                    <v-carousel :hide-controls="true" :cycle="false" class="services-carousel"> 
                         <v-carousel-item
                         v-for="(hayChixImg,i) in hayChixImgs"
                         :key="i"
@@ -73,7 +75,7 @@
             <!--Special Needs Horses Section-->
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-img :src="require('@/assets/images/horses/TrainerWithHorse.jpg')" height="500px">
+                    <v-img class="services-self-care-img" :src="require('@/assets/images/horses/TrainerWithHorse.jpg')">
                     </v-img>
                     <v-card-title primary-title>
                         <div>
@@ -92,4 +94,14 @@
 </template>
 
 <style scoped>
+    .services-self-care-img {
+        height: 500px !important;
+    }
+
+    @media (max-width: 600px) {
+        .services-self-care-img,
+        .services-carousel {
+            height: 400px !important;
+        }
+    }
 </style>

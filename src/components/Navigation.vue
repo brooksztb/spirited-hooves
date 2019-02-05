@@ -35,12 +35,10 @@ export default {
         <v-toolbar app color="deep-purple darken-1" dark>
             <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-spacer class="hidden-md-and-up"></v-spacer>
-            <router-link to="/">
-                <v-toolbar-title v-scroll-to="'#app'">
-                    <img class="nav-logo" src="@/assets/SpiritedHooves-logo.svg" alt="" />
-                    {{appTitle}}
-                </v-toolbar-title>
-            </router-link>
+            <v-toolbar-title v-scroll-to="'#app'">
+                <img class="nav-logo hidden-xs-only" src="@/assets/SpiritedHooves-logo.svg" alt="" />
+                {{appTitle}}
+            </v-toolbar-title>
             <template v-for="(item, index) in items">
                 <v-btn flat class="hidden-sm-and-down" v-scroll-to="item.link" :key="index">{{item.title}}</v-btn>
             </template>

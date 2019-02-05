@@ -1,6 +1,6 @@
 <script>
   import HomeHero from '@/components/HomeHero';
-  import Details from '@/components/Details';
+  import About from '@/components/About';
   import Services from '@/components/Services';
   import Contact from '@/components/Contact';
 
@@ -8,7 +8,7 @@
       name: 'home',
       components: {
           HomeHero,
-          Details,
+          About,
           Services,
           Contact
       }
@@ -18,7 +18,7 @@
 <template>
     <span>
         <home-hero></home-hero>
-        <details></details>
+        <about></about>
         <services></services>
         <contact></contact>
         <v-footer class="pa-3" color="deep-purple darken-1">
