@@ -11,7 +11,6 @@
                 ],
                 boardingImgs: [
                     {src: require('@/assets/images/arena/Arena1.jpg')},
-                    {src: require('@/assets/images/arena/Jump1.jpeg')},
                     {src: require('@/assets/images/barn/OutsideStall.jpg')},
                     {src: require('@/assets/images/barn/Stall-Outdoor-Empty.png')},
                     {src: require('@/assets/images/barn/Barn.jpg')},
@@ -26,12 +25,12 @@
 <template>
     <v-container grid-list-lg id="Services">
         <v-layout row>
-            <v-flex xs12 class="text-xs-center display-1 font-weight-black my-5">Available Services</v-flex>
+            <v-flex xs12 class="text-xs-center display-1 font-weight-bold grey--text text--darken-3 my-5">Available Services</v-flex>
         </v-layout>
-        <v-layout row wrap>
+        <v-layout row wrap align-center justify-center>
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-carousel :hide-controls="true" :cycle="false" class="services-carousel"> 
+                    <v-carousel :hide-controls="true" :cycle="false" class="services-carousel" :height="600"> 
                         <v-carousel-item
                         v-for="(boardingImg,i) in boardingImgs"
                         :key="i"
@@ -41,7 +40,7 @@
 
                     <v-card-title primary-title>
                         <div>
-                            <h3 class="headline mb-0">Boarding Options Available</h3>
+                            <h3 class="grey--text text--darken-3 headline mb-0">Boarding Options Available</h3>
                             <div>
                                 Pasture boarding with sheds, Box stalls with daily turn out, 150’ x 200’ outdoor arena, and a 50’ round pen.
                                 Monthly board includes good quality grass hay and blanketing as needed. Grain and supplements are supplied by the animal’s owner and will be fed as instructed. Owner lives on property. Free Trailer Parking. *Rates are subject to change.
@@ -54,7 +53,7 @@
             <!--Haychix Nets Section-->
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-carousel :hide-controls="true" :cycle="false" class="services-carousel"> 
+                    <v-carousel :hide-controls="true" :cycle="false" class="services-carousel" :height="600"> 
                         <v-carousel-item
                         v-for="(hayChixImg,i) in hayChixImgs"
                         :key="i"
@@ -63,7 +62,7 @@
                     </v-carousel>
                     <v-card-title primary-title>
                         <div>
-                            <h3 class="headline mb-0">Hay Chix Nets</h3>
+                            <h3 class="grey--text text--darken-3 headline mb-0">Hay Chix Nets</h3>
                             <div>
                                 Spirited Hooves is also an authorized Hay Chix dealer. Providing Hay Net feeders for your horses. Options include Hay Nets by Flake, Square Bale, or Round Bale. *Inquire for Prices.
                             </div>
@@ -75,11 +74,11 @@
             <!--Special Needs Horses Section-->
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-img class="services-self-care-img" :src="require('@/assets/images/horses/TrainerWithHorse.jpg')">
+                    <v-img class="services-self-care-img" :src="require('@/assets/images/horses/TrainerWithHorse.jpg')" position="center top">
                     </v-img>
                     <v-card-title primary-title>
                         <div>
-                            <h3 class="headline mb-0">Self Care</h3>
+                            <h3 class="grey--text text--darken-3 headline mb-0">Self Care</h3>
                             <div>
                                 Info About this needed
                             </div>
@@ -95,13 +94,12 @@
 
 <style scoped>
     .services-self-care-img {
-        height: 500px !important;
+        height: 600px !important;
     }
 
     @media (max-width: 600px) {
-        .services-self-care-img,
-        .services-carousel {
-            height: 400px !important;
+        .services-self-care-img {
+            height: 450px !important;
         }
     }
 </style>
