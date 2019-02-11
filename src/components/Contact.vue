@@ -1,50 +1,59 @@
 <script>
 export default {
     name: 'Contact',
-    $_veeValidate: {
-      validator: 'new'
-    },
-
-    data: () => ({
-      name: '',
-      email: '',
-      message: '',
-      dictionary: {
-        attributes: {
-          email: 'E-mail Address'
-          // custom attributes
-        },
-        custom: {
-          name: {
-            required: () => 'Name can not be empty',
-            max: 'The name field may not be greater than 35 characters'
-            // custom messages
-          },
-          message: {
-              required: () => 'Message can not be empty'
-          }
-        }
-      },
-      rules: {
-        email: v => (v || '').match(/@/) || 'Please enter a valid email'
-      },
-      form: false,
-      isLoading: false,
-
-    }),
-    mounted () {
-      this.$validator.localize('en', this.dictionary)
+    data() {
+      return {
+        name: '',
+        nameRules: [
+          v => !!v || 'Name is required',
+          v => (v && v.length <= 35) || 'Name must be less than 35 characters'
+        ],
+        email: '',
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+/.test(v) || 'E-mail must be valid'
+        ],
+        message: '',
+        messageRules: [
+          v => !!v || 'Message is required'
+        ],
+        form: false,
+        isLoading: false,
+        emailSuccess: false,
+        emailFailure: false
+      }
     },
     methods: {
       submit () {
-        this.$validator.validateAll();
+        this.isLoading = true;
+        
         //if valid form then send email to send grid service
+        this.sendEmail(this.name, this.email, this.message);
       },
-      clear () {
-        this.name = ''
-        this.email = ''
-        this.message = ''
-        this.$validator.reset()
+      sendEmail(name, fromEmail, message) {
+        var requestData = {
+          'from_email': fromEmail,
+          'from_name': name,
+          'message_html': message
+        };
+
+        window.emailjs.send('gmail', 'template_sLOUmlXD', requestData)
+        .then(response => {
+          if(response.status === 200) {
+            this.emailSuccess = true;
+            this.clear();
+          }
+        }).catch(error => {
+          console.log(error);
+          this.emailFailure = true;
+        });
+        this.isLoading = false;
+      },
+      reset() {
+        this.$refs.contactForm.reset()
+      },
+      resetValidation () {
+        this.$refs.contactForm.resetValidation()
       }
     }
 }
@@ -62,47 +71,19 @@ export default {
                 <p class="grey--text text--darken-3 subheading mt-3">
                 Give us a call at 720-336-8806 or submit an inquiry below!</p>
 
-                <v-form v-model="form">
-                    <v-text-field
-                        v-model="name"
-                        v-validate="'required|max:35'"
-                        :counter="35"
-                        :error-messages="errors.collect('name')"
-                        label="Name"
-                        data-vv-name="name"
-                        required
-                    ></v-text-field>
-                    <v-text-field
-                    v-model="email"
-                    v-validate="'required|email'"
-                    :rules="[rules.email]"
-                    :error-messages="errors.collect('email')"
-                    label="E-mail"
-                    data-vv-name="email"
-                    required
-                    ></v-text-field>
-                    <v-textarea
-                    v-model="message"
-                    v-validate="'required|message'"
-                    :error-messages="errors.collect('message')"
-                    auto-grow
-                    box
-                    class="form-message"
-                    label="Message"
-                    data-vv-name="message"
-                    rows="3"
-                    required
-                    ></v-textarea>
+                <v-form ref="contactForm" v-model="form">
+                    <v-text-field v-model="name" :counter="35" label="Name" required></v-text-field>
+                    <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                    <v-textarea v-model="message" auto-grow box class="form-message" label="Message" rows="3" required></v-textarea>
+                    <v-btn class="grey--text text--darken-3" @click="reset">Clear</v-btn>
+                    <v-btn :disabled="!form" :loading="isLoading" class="white--text" color="deep-purple darken-1" depressed @click="submit">Submit</v-btn>
                 </v-form>
-                <v-btn class="grey--text text--darken-3" @click="clear">Clear</v-btn>
-                <v-btn
-                    :disabled="!form"
-                    :loading="isLoading"
-                    class="white--text"
-                    color="deep-purple darken-1"
-                    depressed
-                    @click="submit"
-                >Submit</v-btn>
+                <v-alert v-model="emailSuccess" dismissible type="success">
+                  Your inquiry has been sent! We'll get back to you shortly.
+                </v-alert>
+                <v-alert v-model="emailFailure" dismissible type="error">
+                  Oops, something went wrong. Please submit your request again or try again later.
+                </v-alert>
             </v-flex>
         </v-layout>
     </v-container>
