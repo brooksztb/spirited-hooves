@@ -1,6 +1,11 @@
 <script>
+import VueRecaptcha from 'vue-recaptcha';
+
 export default {
     name: 'Contact',
+    components: {
+      VueRecaptcha
+    },
     data() {
       return {
         name: '',
@@ -20,34 +25,43 @@ export default {
         form: false,
         isLoading: false,
         emailSuccess: false,
-        emailFailure: false
+        emailFailure: false,
+        siteKey: process.env.VUE_APP_SITE
       }
     },
     methods: {
       submit () {
-        this.isLoading = true;
-        
-        //if valid form then send email to send grid service
-        this.sendEmail(this.name, this.email, this.message);
+        this.$refs.recaptcha.execute();
       },
-      sendEmail(name, fromEmail, message) {
+      onCaptchaVerified(recaptchaToken) {
+        this.$refs.recaptcha.reset();
+        this.sendEmail(this.name, this.email, this.message, recaptchaToken);
+      },
+      onCaptchaExpired() {
+        this.$refs.recaptcha.reset();
+      },
+      sendEmail(name, fromEmail, message, token) {
+        this.isLoading = true;
         var requestData = {
           'from_email': fromEmail,
           'from_name': name,
-          'message_html': message
+          'message_html': message,
+          'g-recaptcha-response': token
         };
 
         window.emailjs.send('gmail', 'template_sLOUmlXD', requestData)
         .then(response => {
           if(response.status === 200) {
             this.emailSuccess = true;
-            this.clear();
+            this.reset();
+          } else {
+            this.emailFailure = true;
           }
         }).catch(error => {
           console.log(error);
-          this.emailFailure = true;
+        }).then(() => {
+          this.isLoading = false;
         });
-        this.isLoading = false;
       },
       reset() {
         this.$refs.contactForm.reset()
@@ -75,6 +89,8 @@ export default {
                     <v-text-field v-model="name" :counter="35" label="Name" required></v-text-field>
                     <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
                     <v-textarea v-model="message" auto-grow box class="form-message" label="Message" rows="3" required></v-textarea>
+                    <vue-recaptcha class="captcha-badge" ref="recaptcha" @verify="onCaptchaVerified" @expired="onCaptchaExpired" size="invisible" :sitekey="siteKey" badge="inline">
+                    </vue-recaptcha>
                     <v-btn class="grey--text text--darken-3" @click="reset">Clear</v-btn>
                     <v-btn :disabled="!form" :loading="isLoading" class="white--text" color="deep-purple darken-1" depressed @click="submit">Submit</v-btn>
                 </v-form>
@@ -92,5 +108,9 @@ export default {
 <style scoped>
     .form-message {
         margin-top: 5px;
+    }
+
+    .captcha-badge {
+      display: none;
     }
 </style>
