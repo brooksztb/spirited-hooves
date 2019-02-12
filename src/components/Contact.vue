@@ -88,9 +88,24 @@ export default {
                 <v-form ref="contactForm" v-model="form">
                     <v-text-field v-model="name" :rules="nameRules" :counter="35" label="Name" required></v-text-field>
                     <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
-                    <v-textarea v-model="message" :rules="messageRules" auto-grow box class="form-message" label="Message" rows="4" required></v-textarea>
+                    <v-textarea v-model="message" :rules="messageRules" auto-grow box class="form-message" label="Message" rows="5" required></v-textarea>
                     <vue-recaptcha class="captcha-badge" ref="recaptcha" @verify="onCaptchaVerified" @expired="onCaptchaExpired" size="invisible" :sitekey="siteKey" badge="inline">
                     </vue-recaptcha>
+                    <v-expansion-panel class="mb-3">
+                      <v-expansion-panel-content>
+                        <div slot="header" class="font-italic grey--text text--darken-3">
+                          Spirited Hooves respects your privacy, click here to view our privacy policy
+                        </div>
+                        <v-card>
+                          <v-card-text class="grey--text text--darken-3">
+                            This site does not automatically gather any personal information from you unless you provide it to Spirited Hooves voluntarily through contacting
+                            us via e-mail, phone, or by completing and submitting the online form. If you should choose to provide us with personal information - as in an e-mail
+                            or by filling out a form and submitting it to us through the site - we will use that information to respond to your message and to help us get the information
+                            you have requested. Spirited Hooves does not collect personal information from commercial marketing or distribution to any private organizations.
+                          </v-card-text>
+                        </v-card>
+                      </v-expansion-panel-content>
+                    </v-expansion-panel>
                     <v-btn class="grey--text text--darken-3" @click="reset" :disabled="isLoading">Clear</v-btn>
                     <v-btn :disabled="!form" :loading="isLoading" class="white--text" color="deep-purple darken-1" depressed @click="submit">Submit</v-btn>
                 </v-form>
