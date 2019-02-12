@@ -35,7 +35,7 @@ export default {
         <v-toolbar app color="deep-purple darken-1" dark>
             <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-spacer class="hidden-md-and-up"></v-spacer>
-            <v-toolbar-title v-scroll-to="'#app'">
+            <v-toolbar-title class="nav-logo-container" v-scroll-to="'#app'">
                 <img class="nav-logo hidden-xs-only" src="@/assets/SpiritedHooves-logo.svg" alt="" />
                 {{appTitle}}
             </v-toolbar-title>
@@ -55,6 +55,10 @@ export default {
     }
 
     .drawer-item {
+        cursor: pointer;
+    }
+
+    .nav-logo-container {
         cursor: pointer;
     }
 

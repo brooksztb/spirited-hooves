@@ -86,12 +86,12 @@ export default {
                 Give us a call at 720-336-8806 or submit an inquiry below!</p>
 
                 <v-form ref="contactForm" v-model="form">
-                    <v-text-field v-model="name" :counter="35" label="Name" required></v-text-field>
+                    <v-text-field v-model="name" :rules="nameRules" :counter="35" label="Name" required></v-text-field>
                     <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
-                    <v-textarea v-model="message" auto-grow box class="form-message" label="Message" rows="3" required></v-textarea>
+                    <v-textarea v-model="message" :rules="messageRules" auto-grow box class="form-message" label="Message" rows="4" required></v-textarea>
                     <vue-recaptcha class="captcha-badge" ref="recaptcha" @verify="onCaptchaVerified" @expired="onCaptchaExpired" size="invisible" :sitekey="siteKey" badge="inline">
                     </vue-recaptcha>
-                    <v-btn class="grey--text text--darken-3" @click="reset">Clear</v-btn>
+                    <v-btn class="grey--text text--darken-3" @click="reset" :disabled="isLoading">Clear</v-btn>
                     <v-btn :disabled="!form" :loading="isLoading" class="white--text" color="deep-purple darken-1" depressed @click="submit">Submit</v-btn>
                 </v-form>
                 <v-alert v-model="emailSuccess" dismissible type="success">
