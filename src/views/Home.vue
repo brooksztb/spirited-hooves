@@ -22,7 +22,7 @@
         <services></services>
         <contact></contact>
         <v-footer class="pa-3" color="deep-purple darken-1">
-            <div class="white--text">&copy; Spirited Hooves {{ new Date().getFullYear() }}</div>
+            <div class="white--text">&copy; {{ new Date().getFullYear() }} Spirited Hooves </div>
             <v-spacer></v-spacer>
         </v-footer>
     </span>
