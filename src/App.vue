@@ -13,7 +13,7 @@ export default {
   <v-app id="app">
     <navigation></navigation>
 
-    <v-content transition="slide-x-transition">
+    <v-content>
         <router-view></router-view>
     </v-content>
   </v-app>

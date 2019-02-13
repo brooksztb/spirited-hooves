@@ -74,7 +74,7 @@ export default {
 </script>
 
 <template>
-    <v-container grid-list-lg id="ContactForm">
+    <v-container class="contact-form" grid-list-lg id="ContactForm">
         <v-layout row>
             <v-flex class="display-2 text-xs-center my-5 grey--text text--darken-3">Contact Us</v-flex>
         </v-layout>
@@ -91,11 +91,11 @@ export default {
                     <v-textarea v-model="message" :rules="messageRules" auto-grow box class="form-message" label="Message" rows="5" required></v-textarea>
                     <vue-recaptcha class="captcha-badge" ref="recaptcha" @verify="onCaptchaVerified" @expired="onCaptchaExpired" size="invisible" :sitekey="siteKey" badge="inline">
                     </vue-recaptcha>
-                    <v-expansion-panel class="mb-3">
+                    <v-expansion-panel class="contact-policy-expansion-panel mb-3">
                       <v-expansion-panel-content>
-                        <div slot="header" class="font-italic grey--text text--darken-3">
+                        <template slot="header" class="font-italic grey--text text--darken-3">
                           Spirited Hooves respects your privacy, click here to view our privacy policy
-                        </div>
+                        </template>
                         <v-card>
                           <v-card-text class="grey--text text--darken-3">
                             This site does not automatically gather any personal information from you unless you provide it to Spirited Hooves voluntarily through contacting
@@ -121,11 +121,33 @@ export default {
 </template>
 
 <style scoped>
+    .contact-form {
+      background: #fafafa;
+    }
+
     .form-message {
         margin-top: 5px;
     }
 
     .captcha-badge {
       display: none;
+    }
+
+    .contact-policy-expansion-panel {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .contact-policy-expansion-panel /deep/ .v-expansion-panel__header {
+      font-style: italic;
+      color: #424242 !important;
+      caret-color: #424242 !important;
+      background: #fafafa;
+    }
+
+    .contact-policy-expansion-panel /deep/ .v-expansion-panel__header,
+    .contact-policy-expansion-panel /deep/ .v-card__text {
+      padding-left: 0;
+      background: #fafafa;
     }
 </style>

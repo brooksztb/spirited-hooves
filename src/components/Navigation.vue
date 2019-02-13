@@ -7,11 +7,14 @@ export default {
       drawer: false,
       items: [
           { title: 'About',
-            link: '#AboutUs' }, 
+            link: '#AboutUs',
+            icon: '$vuetify.icons.information-outline' }, 
           { title: 'Services', 
-            link: '#Services' }, 
+            link: '#Services',
+            icon: '$vuetify.icons.horseshoe' }, 
           { title: 'Contact', 
-            link: '#ContactForm' }
+            link: '#ContactForm',
+            icon: '$vuetify.icons.contact-mail' }
         ]
     };
   }

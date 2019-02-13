@@ -15,11 +15,15 @@
                     {src: require('@/assets/images/barn/Stall-Outdoor-Empty.png')},
                     {src: require('@/assets/images/barn/Barn.jpg')},
                     {src: require('@/assets/images/barn/OutsideBarn.jpg')}
+                ],
+                selfCareImgs: [
+                    {src: require('@/assets/images/selfcare/Shed.jpg')},
+                    {src: require('@/assets/images/selfcare/Open-Space.jpg')},
+                    {src: require('@/assets/images/horses/TrainerWithHorse.jpg')},
                 ]
             }
         }
     };
-    //TODO: Create Reuseable Component to Pull images and associated text with the available services
 </script>
 
 <template>
@@ -78,8 +82,13 @@
             <!--Special Needs Horses Section-->
             <v-flex xs12 sm12 md12>
                 <v-card>
-                    <v-img class="services-self-care-img" :src="require('@/assets/images/horses/TrainerWithHorse.jpg')" position="center top">
-                    </v-img>
+                    <v-carousel :hide-controls="true" :cycle="false" class="services-carousel" :height="600"> 
+                        <v-carousel-item
+                        v-for="(selfCareImg,i) in selfCareImgs"
+                        :key="i"
+                        :src="selfCareImg.src"
+                        ></v-carousel-item>
+                    </v-carousel>
                     <v-card-title primary-title>
                         <div>
                             <h3 class="grey--text text--darken-3 headline mb-0">Self Care</h3>
@@ -99,10 +108,6 @@
 </template>
 
 <style scoped>
-    .services-self-care-img {
-        height: 600px !important;
-    }
-
     @media (max-width: 600px) {
         .services-self-care-img,
         .services-carousel {
