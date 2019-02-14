@@ -4,15 +4,15 @@
         data() {
             return {
                 hayChixImgs: [
-                    {src: require('@/assets/images/haychix/HayChixNet-Overcast.png')},
+                    {src: require('@/assets/images/haychix/HayChixNet-Overcast.jpg')},
                     {src: require('@/assets/images/haychix/HayChixNet-Winter.jpg')},
-                    {src: require('@/assets/images/haychix/HayChixNet-BarnStall.png')},
+                    {src: require('@/assets/images/haychix/HayChixNet-BarnStall.jpg')},
                     {src: require('@/assets/images/haychix/HayChixNet-Winter2.jpg')}
                 ],
                 boardingImgs: [
                     {src: require('@/assets/images/arena/Arena1.jpg')},
                     {src: require('@/assets/images/barn/OutsideStall.jpg')},
-                    {src: require('@/assets/images/barn/Stall-Outdoor-Empty.png')},
+                    {src: require('@/assets/images/barn/Stall-Outdoor-Empty.jpg')},
                     {src: require('@/assets/images/barn/Barn.jpg')},
                     {src: require('@/assets/images/barn/OutsideBarn.jpg')}
                 ],

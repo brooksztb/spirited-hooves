@@ -94,14 +94,15 @@ export default {
                     <v-expansion-panel class="contact-policy-expansion-panel mb-3">
                       <v-expansion-panel-content>
                         <template slot="header" class="font-italic grey--text text--darken-3">
-                          Spirited Hooves respects your privacy, click here to view our privacy policy
+                          This site is protected by reCAPTCHA, Click here to view our privacy policies
                         </template>
                         <v-card>
                           <v-card-text class="grey--text text--darken-3">
-                            This site does not automatically gather any personal information from you unless you provide it to Spirited Hooves voluntarily through contacting
+                            <div>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>
+                            <p> This site does not automatically gather any personal information from you unless you provide it to Spirited Hooves voluntarily through contacting
                             us via e-mail, phone, or by completing and submitting the online form. If you should choose to provide us with personal information - as in an e-mail
                             or by filling out a form and submitting it to us through the site - we will use that information to respond to your message and to help us get the information
-                            you have requested. Spirited Hooves does not collect personal information from commercial marketing or distribution to any private organizations.
+                            you have requested. Spirited Hooves does not collect personal information from commercial marketing or distribution to any private organizations. </p>
                           </v-card-text>
                         </v-card>
                       </v-expansion-panel-content>
