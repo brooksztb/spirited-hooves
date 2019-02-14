@@ -1,4 +1,5 @@
-# spirited-hooves
+# spirited-hooves-website
+# This is a website built for Spirited Hooves, Horse and Goat Farm, LLC.
 
 ## Project setup
 ```
