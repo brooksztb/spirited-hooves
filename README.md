@@ -1,5 +1,7 @@
 # spirited-hooves-website
 # This is a website built for Spirited Hooves, Horse and Goat Farm, LLC.
+# This site was built using vue-cli 3, Vuetify, EmailJs for the contact form, reCAPTCHA for security on the contact form, and firebase hosting.
+# Feel free to clone or download this repository if you would like a single page app layout.
 
 ## Project setup
 ```
@@ -14,11 +16,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your tests
-```
-npm run test
 ```
 
 ### Lints and fixes files
